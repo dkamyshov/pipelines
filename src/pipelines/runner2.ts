@@ -111,20 +111,21 @@ export const createPipelineRunner = (
               inputs
             );
           } catch (e) {
-            rejectFunc(id)(convertToPipelineError(e), `  -> [internal error]`);
+            rejectFunc(id)(convertToPipelineError(e), void 0, `INTERNAL ERROR`);
           }
         })
         .catch(e => {
           rejectFunc(id)(
             convertToPipelineError(e),
-            `  -> [unable to load ${name}]`
+            void 0,
+            `UNABLE TO LOAD`
           );
         });
     } else {
       rejectFunc(id)({
         code: 'UNKNOWN_WORKER',
-        message: `${name} is not a worker!`,
-      });
+        message: `"${name}" is not a worker we know about!`,
+      }, void 0, 'UNKNOWN WORKER');
     }
   };
 
@@ -155,22 +156,24 @@ export const createPipelineRunner = (
 
   const rejectFunc = (id: number) => (
     error: IPipelineError,
-    stack?: string
+    stack?: string,
+    additionalInfo?: string
   ) => {
     if (id === 0) {
       const message =
-        'Uncaught pipeline rejection! ' +
+        'Uncaught pipeline rejection!\n' +
         error.code +
         ': ' +
         (error.message || '[no message]') +
-        '\n' +
+        '\n\nExecution path:\n' +
         ('[0] root\n' + (stack || ''));
       onPipelineError(message);
     } else {
       const block = blocks.get(id)!;
-      const currentStack = `[${block.id}] ${block.name} ${
-        block.options ? `\n${JSON.stringify(block.options, null, 4)}\n` : ''
+      const currentStack = `[${block.id}] ${block.name}${additionalInfo ? ` <- ${additionalInfo}`:''} ${
+        block.options ? `\n${JSON.stringify(block.options, null, 4).split('\n').map(l => ' '.repeat(2) + l).join('\n')}` : ''
       }`;
+
 
       if (hasErrorHandler(id)) {
         // kek
