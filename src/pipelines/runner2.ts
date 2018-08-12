@@ -115,17 +115,17 @@ export const createPipelineRunner = (
           }
         })
         .catch(e => {
-          rejectFunc(id)(
-            convertToPipelineError(e),
-            void 0,
-            `UNABLE TO LOAD`
-          );
+          rejectFunc(id)(convertToPipelineError(e), void 0, `UNABLE TO LOAD`);
         });
     } else {
-      rejectFunc(id)({
-        code: 'UNKNOWN_WORKER',
-        message: `"${name}" is not a worker we know about!`,
-      }, void 0, 'UNKNOWN WORKER');
+      rejectFunc(id)(
+        {
+          code: 'UNKNOWN_WORKER',
+          message: `"${name}" is not a worker we know about!`,
+        },
+        void 0,
+        'UNKNOWN WORKER'
+      );
     }
   };
 
@@ -170,10 +170,16 @@ export const createPipelineRunner = (
       onPipelineError(message);
     } else {
       const block = blocks.get(id)!;
-      const currentStack = `[${block.id}] ${block.name}${additionalInfo ? ` <- ${additionalInfo}`:''} ${
-        block.options ? `\n${JSON.stringify(block.options, null, 4).split('\n').map(l => ' '.repeat(2) + l).join('\n')}` : ''
+      const currentStack = `[${block.id}] ${block.name}${
+        additionalInfo ? ` <- ${additionalInfo}` : ''
+      } ${
+        block.options
+          ? `\n${JSON.stringify(block.options, null, 4)
+              .split('\n')
+              .map(l => ' '.repeat(2) + l)
+              .join('\n')}`
+          : ''
       }`;
-
 
       if (hasErrorHandler(id)) {
         // kek
