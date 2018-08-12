@@ -1,0 +1,17 @@
+.table {
+  border-collapse: collapse;
+  margin-bottom: 8pt;
+}
+
+.table tr, td, th {
+  border: 1px solid black;
+  padding: 4pt;
+}
+
+.table tr.selected {
+  background-color: green;
+}
+
+.button {
+  padding: 8pt;
+}

@@ -1,0 +1,15 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(0, 0, 97);
+}
+
+.nav .link {
+  padding: 8pt;
+  color: white;
+  text-decoration: none;
+}
+
+.nav .link:hover {
+  background-color: blue;
+}

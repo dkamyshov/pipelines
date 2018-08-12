@@ -1,0 +1,15 @@
+{
+  "rows": [
+    {
+      "id": 0,
+      "source": 0,
+      "destination": "НЕТ"
+    },
+
+    {
+      "id": 1,
+      "source": 1,
+      "destination": "ДА"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "exact": true,
+      "component": "Home",
+      "name": "Главная"
+    },
+
+    {
+      "path": "/queries",
+      "component": "Pipeline",
+      "options": {
+        "initUrl": "/public/pipelines/queries.json"
+      },
+      "name": "Очереди"
+    }
+  ]
+}

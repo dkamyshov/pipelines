@@ -1,0 +1,17 @@
+{
+  "rows": [
+    {
+      "id": 0,
+      "firstName": "Иван",
+      "lastName": "Петров",
+      "isJSDeveloper": 1
+    },
+
+    {
+      "id": 1,
+      "firstName": "Петр",
+      "lastName": "Сидоров",
+      "isJSDeveloper": 1
+    }
+  ]
+}

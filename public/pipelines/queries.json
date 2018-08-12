@@ -1,0 +1,97 @@
+{
+  "main": [
+    {
+      "id": 0,
+      "name": "root",
+      "dependencies": []
+    },
+
+    {
+      "id": 1,
+      "name": "getTableData",
+      "dependencies": [0],
+      "options": {
+        "url": "/public/data/table-data.json"
+      }
+    },
+
+    {
+      "id": 2,
+      "name": "getTableData",
+      "dependencies": [0],
+      "options": {
+        "url": "/public/data/remap-data.json"
+      }
+    },
+
+    {
+      "id": 3,
+      "name": "remap",
+      "dependencies": [1, 2],
+      "options": {
+        "source": "isJSDeveloper",
+        "compare": "source",
+        "return": "destination"
+      }
+    },
+
+    {
+      "id": 4,
+      "name": "sortTable",
+      "dependencies": [3]
+    },
+
+    {
+      "id": 5,
+      "name": "renderTable",
+      "dependencies": [4]
+    }
+  ],
+
+  "actions": {
+    "name": "Далее",
+    "description": [
+      {
+        "id": 0,
+        "name": "root",
+        "dependencies": []
+      },
+
+      {
+        "id": 1,
+        "name": "getCurrentTableData",
+        "dependencies": [0]
+      },
+
+      {
+        "id": 2,
+        "name": "getCurrentTableSelectedRows",
+        "dependencies": [0]
+      },
+
+      {
+        "id": 3,
+        "name": "filterTableSelectedRows",
+        "dependencies": [1, 2]
+      },
+
+      {
+        "id": 4,
+        "name": "sendTableData",
+        "dependencies": [3],
+        "options": {
+          "url": "/public/data-endpoint"
+        }
+      },
+
+      {
+        "id": 5,
+        "name": "navigate",
+        "dependencies": [4],
+        "options": {
+          "url": "/"
+        }
+      }
+    ]
+  }
+}
