@@ -25,10 +25,20 @@ interface IPipelineError {
   message?: string;
 }
 
+/**
+ * Runs a microtask.
+ * 
+ * ==================================
+ * 
+ * **CRITICAL** For speed concerns `runMicrotask` does not handle exceptions by itself. Triple check that there is nothing that may `throw` inside your `catch` routine as any uncaught errors will not only be lost forever, but will also cause you a huge headache!
+ * 
+ * ==================================
+ * 
+ * @param task A function to be executed as a microtask.
+ */
 const runMicrotask = (task: (...args: any[]) => void) =>
   Promise.resolve()
-    .then(task)
-    .catch(e => {});
+    .then(task);
 
 export const convertToPipelineError = (e: Error) => {
   return {

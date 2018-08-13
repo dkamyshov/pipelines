@@ -1,26 +1,26 @@
 const workersResolvers = {
-  root: () => import(/* webpackChunkName: "pipeline.root" */ './workers/root'),
+  root: () => import(/* webpackChunkName: "workers/root" */ './workers/root'),
   timeout: () =>
-    import(/* webpackChunkName: "pipeline.timeout" */ './workers/timeout'),
+    import(/* webpackChunkName: "workers/timeout" */ './workers/timeout'),
   remap: () =>
-    import(/* webpackChunkName: "pipeline.remap" */ './workers/remap'),
-  log: () => import(/* webpackChunkName: "pipeline.log" */ './workers/log'),
+    import(/* webpackChunkName: "workers/remap" */ './workers/remap'),
+  log: () => import(/* webpackChunkName: "workers/log" */ './workers/log'),
   getTableData: () =>
-    import(/* webpackChunkName: "pipeline.getTableData" */ './workers/getTableData'),
+    import(/* webpackChunkName: "workers/getTableData" */ './workers/getTableData'),
   sortTable: () =>
-    import(/* webpackChunkName: "pipeline.sortTable" */ './workers/sortTable'),
+    import(/* webpackChunkName: "workers/sortTable" */ './workers/sortTable'),
   renderTable: () =>
-    import(/* webpackChunkName: "pipeline.renderTable" */ './workers/renderTable'),
+    import(/* webpackChunkName: "workers/renderTable" */ './workers/renderTable'),
   getCurrentTableSelectedRows: () =>
-    import(/* webpackChunkName: "pipeline.getCurrentTableSelectedRows" */ './workers/getCurrentTableSelectedRows'),
+    import(/* webpackChunkName: "workers/getCurrentTableSelectedRows" */ './workers/getCurrentTableSelectedRows'),
   getCurrentTableData: () =>
-    import(/* webpackChunkName: "pipeline.getCurrentTableData" */ './workers/getCurrentTableData'),
+    import(/* webpackChunkName: "workers/getCurrentTableData" */ './workers/getCurrentTableData'),
   filterTableSelectedRows: () =>
-    import(/* webpackChunkName: "pipeline.filterTableSelectedRows" */ './workers/filterTableSelectedRows'),
+    import(/* webpackChunkName: "workers/filterTableSelectedRows" */ './workers/filterTableSelectedRows'),
   sendTableData: () =>
-    import(/* webpackChunkName: "pipeline.sendTableData" */ './workers/sendTableData'),
+    import(/* webpackChunkName: "workers/sendTableData" */ './workers/sendTableData'),
   navigate: () =>
-    import(/* webpackChunkName: "pipeline.navigate" */ './workers/navigate'),
+    import(/* webpackChunkName: "workers/navigate" */ './workers/navigate'),
 };
 
 export type TWorkerName = keyof typeof workersResolvers;
